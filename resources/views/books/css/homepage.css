@@ -1,0 +1,22 @@
+#learn{
+	background-color: #123456;
+	border-color: #FFFFFF;
+}
+
+#heading, #header{
+	color: #FFFFFF;
+}
+
+.jumbotron{
+	background-image: url("http://www.planwallpaper.com/static/images/518169-backgrounds.jpg");
+}
+
+.btn-default{
+	background-color: #123456;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+}
+
+#avatar{
+	border-radius: 1000px;
+}
