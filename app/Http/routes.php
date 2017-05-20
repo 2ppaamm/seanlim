@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/auth0/callback', 'Auth0Controller@callback');
+
+
 
 Route::get('/practice', function() {
 
@@ -23,18 +26,12 @@ Route::get('/practice', function() {
 
 });
 
-/*
-* Book Routes
-*/
-Route::get('books/add', 'BookController@getAdd');
-Route::post('books/add', 'BookController@postAdd');
-
 
 /*
 * Navigation Bar
 */
 Route::get('about', 'BookController@getAbout');
-Route::get('/', 'BookController@getIndex');
+Route::get('/', 'BookController@index');
 
 Route::resource('tag', 'TagController');
 Route::resource('books.chapters', 'ChapterController');
@@ -44,20 +41,6 @@ Route::resource('books', 'BookController');
 /*
 * Login routes
 */
-# Show login form
-Route::get('/login', 'Auth\AuthController@getLogin');
-
-# Process login form
-Route::post('/login', 'Auth\AuthController@postLogin');
-
-# Process logout
-Route::get('/logout', 'Auth\AuthController@logout');
-
-# Show registration form
-Route::get('/register', 'Auth\AuthController@getRegister');
-
-# Process registration form
-Route::post('/register', 'Auth\AuthController@postRegister');
 
 # Process logout
 Route::get('/logout', 'Auth\AuthController@logout');

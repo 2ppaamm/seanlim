@@ -26,7 +26,7 @@
         <div class="panel-body">
           @foreach ($mybooks as $book)
           <div class="col-md-4">
-            <img src="{{$book->cover}}" class="img-responsive"/>
+            <img src="{{$book->cover}}" class="img-responsive" alt="Cover Image for {{$book->title}}"/>
             <h2>{{$book->title}}</h2><span>by {{$book->user->name}}</span>
             <p>{{$book->synopsis}}</p>
             <p>
@@ -34,6 +34,9 @@
             </p>
           </div>
           @endforeach
+          @if (sizeOf($mybooks) == 0)
+            <p> It seems like you don't have any books at the moment. <a href="/books/create">Click here</a> to create one! </p>
+          @endif
         </div>
         </div>
       </div>
@@ -45,7 +48,7 @@
         <div class="panel-body">
           @foreach ($books as $book)
           <div class="col-md-4">
-            <img src="{{$book->cover}}" class="img-responsive"/>
+            <img src="{{$book->cover}}" class="img-responsive" alt="Cover Image for {{$book->title}}"/>
             <h2>{{$book->title}}</h2><span>by {{$book->user->name}}</span>
             <p>{{$book->synopsis}}</p>
             <p><a class="btn btn-default" href="/books/{{$book->id}}" role="button">View details &raquo;</a></p>

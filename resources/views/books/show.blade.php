@@ -23,7 +23,7 @@
       <!-- Column of book summaries -->
       <div class="row">
         <div class="col-md-4">
-          <p><img id = "cover" alt = "Cover image" src = "{{$books->cover}}" /></p>
+          <p><img id = "cover" alt = "Cover image" src = "{{$books->cover}}"/></p>
         </div>
         <div class = 'col-md-8'>
           <div class="panel panel-default">
@@ -75,8 +75,6 @@
               @endforeach
             </ul>
           </div>
-
-
       </div>
     </div>
   </div>

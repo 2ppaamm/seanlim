@@ -23,7 +23,7 @@ class BookController extends Controller
     /**
     * Responds to requests to GET /index
     */
-    public function getIndex() {
+    public function index() {
     	$user = Auth::user();
 		$mybooks = null;
     	if($user) {

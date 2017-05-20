@@ -160,6 +160,7 @@ return [
          * Third-party package providers
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+        Auth0\Login\LoginServiceProvider::class,
 
     ],
 
@@ -208,7 +209,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'Auth0' => Auth0\Login\Facade\Auth0::class,
     ],
 
 ];

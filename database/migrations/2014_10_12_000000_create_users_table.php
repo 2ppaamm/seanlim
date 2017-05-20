@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image');
+            $table->string('image')->default('http://walyou.com/wp-content/uploads//2010/12/facebook-profile-picture-no-pic-avatar.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

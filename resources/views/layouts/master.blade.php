@@ -66,12 +66,8 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">    
-          @if(Auth::check())
-            <?php
-              echo 'Hello, ';
-              echo Auth::user()->name;
-              echo '!';
-            ?>
+          @if(Auth::user())
+            <img src = "{{Auth::user()->image}}" alt = "{{Auth::user()->name}}'s avatar" style="max-height:40px; margin-top:-10px;"></img>
           @else
             <?php
               echo 'Hello, Guest!'
@@ -81,19 +77,30 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        @if(Auth::check())
+        <script src="https://cdn.auth0.com/js/lock/10.15/lock.min.js"></script>
+        <script>
+          var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
+            auth: {
+              redirectUrl: 'http://localhost/auth0/callback',
+              responseType: 'code',
+              params: {
+                scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+              }
+            }
+          });
+        </script>
+          <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
           <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
+        @if(Auth::check())
           <li><a href="/books/create">Create New Book<span class="sr-only">(current)</span></a></li>
           <li><a href="/logout">Logout<span class="sr-only">(current)</span></a></li>
         @else
-          <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
-          <li><a href="/login">Login<span class="sr-only">(current)</span></a></li>
-          <li><a href="/register">Register<span class="sr-only">(current)</span></a></li>
+          <li><a onclick="lock.show();">Login or Register<span class="sr-only">(current)</span></a></li>
         @endif
       </ul>
           <form name = "searchForm" class="navbar-form navbar-right" onsubmit="return validateForm()" method="post">
             <div class="form-group">
-              <input type="text" class="form-control" name = "searchInput">
+              <input type="text" class="form-control" name = "searchInput" placeholder="Book Titles or Authors">
             </div>
             <button type="submit" class="btn btn-success">Search</button>
           </form>
@@ -128,6 +135,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/javascript/homepage.js"></script>
+
 
   </body>
 </html>
