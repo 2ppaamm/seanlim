@@ -38,6 +38,9 @@ class BookController extends Controller
     	return view('books.about');
     }
 
+    public function search(Request $request) {
+    	return "...";
+    }
 
     /**
      * Responds to requests to GET /books/show/{id}

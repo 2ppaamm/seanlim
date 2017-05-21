@@ -43,18 +43,16 @@
     @endif
 
       <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h3>Booklist</h3></div>
-        <div class="panel-body">
-          @foreach ($books as $book)
-          <div class="col-md-4">
-            <img src="{{$book->cover}}" class="img-responsive" alt="Cover Image for {{$book->title}}"/>
-            <h2>{{$book->title}}</h2><span>by {{$book->user->name}}</span>
-            <p>{{$book->synopsis}}</p>
-            <p><a class="btn btn-default" href="/books/{{$book->id}}" role="button">View details &raquo;</a></p>
-          </div>
-          @endforeach
-        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3>Book list</h3></div>
+            <div class="panel-body" ng-init="books = {{$books}}">
+              <div ng-repeat="book in books | filter:searchInput" class="col-md-4">
+                <img src="@{{book.cover}}" class="img-responsive" alt="Cover Image for @{{book.title}}"/>
+                <h2>@{{book.title}}</h2><span>by @{{book.user.name}}</span>
+                <p>@{{book.synopsis}}</p>
+                <p><a class="btn btn-default" href="/books/@{{book.id}}" role="button">View details &raquo;</a></p>
+              </div>
+            </div>
         </div>
       </div>
     </div> <!--container-->

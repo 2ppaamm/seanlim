@@ -12,7 +12,7 @@
 */
 Route::get('/auth0/callback', 'Auth0Controller@callback');
 
-
+Route::post('/search', 'BookController@search');
 
 Route::get('/practice', function() {
 

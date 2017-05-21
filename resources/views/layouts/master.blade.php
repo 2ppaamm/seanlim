@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="searchApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,45 +16,11 @@
     <!-- Link to Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- <link href="css/homepage.css" rel="stylesheet"> -->
-    <style>
-      #learn{
-        background-color: #123456;
-        border-color: #FFFFFF;
-      }
-
-      #heading, #header{
-        color: #FFFFFF;
-      }
-
-      .jumbotron{
-        background-image: url("http://www.planwallpaper.com/static/images/518169-backgrounds.jpg");
-      }
-
-      .btn-default, .btn, .btn-success{
-        background-color: #123456;
-        border-color: #FFFFFF;
-        color: #FFFFFF;
-      }
-
-      #avatar{
-        border-radius: 1000px;
-      }
-
-      #cover{
-        height: auto;
-        width: 360px;
-        border-color:#000000;
-        border-width: 4px;
-        border-style: double;
-      }
-
-
-    </style>
+    <link href="/css/homepage.css" rel="stylesheet">
 
   </head>
 
-  <body>
+  <body ng-controller="searchController">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -98,11 +64,10 @@
           <li><a onclick="lock.show();">Login or Register<span class="sr-only">(current)</span></a></li>
         @endif
       </ul>
-          <form name = "searchForm" class="navbar-form navbar-right" onsubmit="return validateForm()" method="post">
+          <form id = "searchForm" class="navbar-form navbar-right" action='/search'>
             <div class="form-group">
-              <input type="text" class="form-control" name = "searchInput" placeholder="Book Titles or Authors">
+              <input type="text" class="form-control" id = "searchInput" placeholder="Search Book Titles" ng-model="searchInput.title">
             </div>
-            <button type="submit" class="btn btn-success">Search</button>
           </form>
     </div><!-- /.navbar-collapse -->
         <div id="navbar" class="navbar-collapse collapse">
@@ -134,6 +99,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="/javascript/homepage.js"></script>
 
 
