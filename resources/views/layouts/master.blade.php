@@ -105,6 +105,7 @@
           searchApp.controller("searchController", function($scope) {
             $(".submitdeleteform").submit(function(e) {
               e.preventDefault();
+              $('.modal').modal('hide');
               $.ajax({
                 type:"POST",
                 url: $(this).data('url'),
@@ -112,7 +113,8 @@
                 success: function(msg) {
                   $books=msg.books;
                   $chapters=msg.chapters;
-                  $scope.apply();
+                  //$scope.apply();
+                  location.reload()
                 }
               });
             });

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Chapter extends Model
 {
 	protected $fillable = [
-        'name', 'content', 'book_id', 'created_at', 'updated_at',
+        'name', 'content', 'book_id', 'created_at', 'updated_at','order'
     ];
     public function book() {
         # Chapter belongs to Book

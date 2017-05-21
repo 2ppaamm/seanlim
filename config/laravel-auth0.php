@@ -39,7 +39,7 @@ return array(
     |
     */
 
-    'redirect_uri'  => 'http://localhost/auth0/callback'
+    'redirect_uri'  => env('AUTH0_CALLBACK', 'http://localhost/auth0/callback'),
 
     /*
     |--------------------------------------------------------------------------

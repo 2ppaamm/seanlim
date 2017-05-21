@@ -34,13 +34,14 @@
               {{$books->synopsis}}
             </div>
           </div>
-          <div class="panel panel-default">
+          <div class="panel panel-default chapter-panel">
             <!-- Default panel contents -->
             <div class="panel-heading">Chapters</div>
             <!-- List group -->
             <ul class="list-group">
               @foreach ($chapters as $chapter)
                 <li class="list-group-item">
+                  Chapter {{$chapter->order}}
                   <a href = '/books/{{$books->id}}/chapters/{{$chapter->id}}'>{{$chapter->name}}</a>
                   @if (Auth::user() && Auth::user()->id == $books->user->id)                  
                     <!-- Modal Trigger -->

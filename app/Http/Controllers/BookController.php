@@ -30,31 +30,13 @@ class BookController extends Controller
 	    	$userid = $user->id;
 	    	$mybooks = Book::where('user_id', '=', $userid)->get();	
     	}
-    	$books = Book::with('user')->orderBy('updated_at')->get();
+    	$books = Book::with('user')->orderBy('updated_at', 'desc')->get();
         return view('books.index')->with(compact('mybooks', 'books'));
     }
 
     public function getAbout() {
     	return view('books.about');
     }
-
-    public function search(Request $request) {
-    	return "...";
-    }
-
-    /**
-     * Responds to requests to GET /books/show/{id}
-     */
-	public function getBook($id = null) {
-		$book = Book::whereId($id)->first();
-		$chapters = Chapter::where('book_id', '=', $id)->get();
-    	return view('books.show')->with(compact('book', 'chapters'));
-	}
-
-	public function getChapter($id = null) {
-		$chapter = Chapter::whereId($id)->first();
-    	return view('books.chapter')->with(compact('chapter'));
-	}
 
     /**
      * Responds to requests to GET /books/create
@@ -83,6 +65,9 @@ class BookController extends Controller
 	    return redirect('/');
 	}
 
+    /**
+     * Responds to requests to GET /books/show/{id}
+     */
 	public function show(Book $books){
     	$chapters = Chapter::where('book_id', '=', $books->id)->orderBy('order')->get();
     	return view('books.show')->with(compact('books', 'chapters'));
@@ -102,11 +87,11 @@ class BookController extends Controller
         $books->synopsis = $request->input('synopsis');
         $books->updated_at = new \DateTime();
         $books->save();
-        $chapters = Chapter::where('book_id', '=', $books->id)->get();
+        $chapters = Chapter::where('book_id', '=', $books->id)->orderBy('order')->get();
     	return view('books.show')->with(compact('books', 'chapters'));
     }
 
-public function destroy(Book $books){
+    public function destroy(Book $books){
         $author = $books->user;  
         if ($author['id'] == Auth::user()->id){
             $books->delete();

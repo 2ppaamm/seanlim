@@ -30,10 +30,11 @@ class ChapterController extends Controller
     }
 
 public function store(createChapterRequest $request, Book $books) {
+//return $request->order;
         Chapter::create(
                 ['name' => $request->input('name'), 
                 'content' => $request->input('content'),
-                'order' => $request->input('order'),
+                'order' => $request->order,
                 'book_id' => $books->id,
                 'created_at' => new \DateTime(),
                 'updated_at' => new \DateTime()
@@ -70,9 +71,12 @@ public function store(createChapterRequest $request, Book $books) {
         $author = $chapters->book->user;
         if ($author['id'] == Auth::user()->id || $chapters->book == $books){
             $chapters->delete();
-            $chapters=Chapter::whereBookId($books->id)->get();
+            $chapters=Chapter::whereBookId($books->id)->orderBy('order')->get();
+            if ($request->ajax()){
+                return response()->json(['books'=>$books, 'chapters'=>$chapters]);
+            }
             return redirect()->back();
         }
-        return "You do not have sufficient permissions to delete this chapter.";
+        return response()->json(["You do not have sufficient permissions to delete this chapter."]);
     }
 }
