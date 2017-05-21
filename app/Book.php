@@ -7,6 +7,12 @@ use Foobooks\User;
 
 class Book extends Model
 {
+    public $timestamps = true;
+
+    protected $fillable = [
+        'title', 'cover', 'synopsis', 'created_at', 'updated_at', 'user_id',
+    ];
+
     public function user() {
         # Book belongs to Author
         # Define an inverse one-to-many relationship.

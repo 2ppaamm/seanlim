@@ -17,11 +17,15 @@
         <div class="col-md-12">
           @include('errors')
           <div class = "col-md-6">
-            <form method='POST' action='/books/{{$books->id}}/chapters'>
+          <form method='POST' action='/books/{{$books->id}}/chapters'>
                 <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                 <div class='form-group'>
                       <label for='name'>Chapter Title</label>
                       <input name='name' class = 'form-control' type='text'>
+                </div>
+                <div class='form-group'>
+                      <label for='order'>Chapter Number</label>
+                      <input name='order' class = 'form-control' type='text'>
                 </div>
                 <div class='form-group'>
                       <label for='content'>Content</label>

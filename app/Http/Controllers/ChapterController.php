@@ -30,15 +30,17 @@ class ChapterController extends Controller
     }
 
 public function store(createChapterRequest $request, Book $books) {
-        // Code would go here to add the book to the database
-        DB::table('chapters')->insert(
+        Chapter::create(
                 ['name' => $request->input('name'), 
                 'content' => $request->input('content'),
-                'book_id' => $books->id
+                'order' => $request->input('order'),
+                'book_id' => $books->id,
+                'created_at' => new \DateTime(),
+                'updated_at' => new \DateTime()
                 ]
         );
-        // Then you'd give the user some sort of confirmation:
-        return redirect('/');
+        $chapters = Chapter::where('book_id', '=', $books->id)->get();
+        return view('books.show')->with(compact('books', 'chapters'));
     }
 
     public function show(Book $books, Chapter $chapters){
@@ -56,16 +58,19 @@ public function store(createChapterRequest $request, Book $books) {
     public function update(Book $books, Chapter $chapters, Request $request){
         $chapters->name = $request->input('name');
         $chapters->content = $request->input('content');
+        $chapters->updated_at = new \DateTime();
+        $chapters->order = $request->input('order');
         $chapters->save();
 
         $chapters = Chapter::where('book_id', '=', $books->id)->get();
         return view('books.show')->with(compact('books', 'chapters'));;
     }
 
-    public function destroy(Book $books, Chapter $chapters){
-        $author = $chapters->book->user;  
+    public function destroy(Book $books, Chapter $chapters, Request $request){
+        $author = $chapters->book->user;
         if ($author['id'] == Auth::user()->id || $chapters->book == $books){
             $chapters->delete();
+            $chapters=Chapter::whereBookId($books->id)->get();
             return redirect()->back();
         }
         return "You do not have sufficient permissions to delete this chapter.";

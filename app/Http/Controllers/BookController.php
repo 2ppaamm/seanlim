@@ -30,7 +30,7 @@ class BookController extends Controller
 	    	$userid = $user->id;
 	    	$mybooks = Book::where('user_id', '=', $userid)->get();	
     	}
-    	$books = Book::all();
+    	$books = Book::with('user')->orderBy('updated_at')->get();
         return view('books.index')->with(compact('mybooks', 'books'));
     }
 
@@ -71,21 +71,20 @@ class BookController extends Controller
 	 * Responds to requests to POST /books/create
 	 */
 	public function store(CreateBookRequest $request) {
-	    // Code would go here to add the book to the database
-	    DB::table('books')->insert(
+	    Book::create(
 	    		['title' => $request->input('title'), 
 	    		'cover' => $request->input('cover'),
 	    		'synopsis' => $request->input('synopsis'),
+	    		'created_at' => new \DateTime(),
+	    		'updated_at' => new \DateTime(),
 	    		'user_id' => Auth::user()->id
 	    		]
 	    );
-
-	    // Then you'd give the user some sort of confirmation:
 	    return redirect('/');
 	}
 
 	public function show(Book $books){
-    	$chapters = Chapter::where('book_id', '=', $books->id)->get();
+    	$chapters = Chapter::where('book_id', '=', $books->id)->orderBy('order')->get();
     	return view('books.show')->with(compact('books', 'chapters'));
     }
 
@@ -101,6 +100,7 @@ class BookController extends Controller
         $books->title = $request->input('title');
         $books->cover = $request->input('cover');
         $books->synopsis = $request->input('synopsis');
+        $books->updated_at = new \DateTime();
         $books->save();
         $chapters = Chapter::where('book_id', '=', $books->id)->get();
     	return view('books.show')->with(compact('books', 'chapters'));

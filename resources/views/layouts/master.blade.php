@@ -43,18 +43,7 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <script src="https://cdn.auth0.com/js/lock/10.15/lock.min.js"></script>
-        <script>
-          var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
-            auth: {
-              redirectUrl: 'http://localhost/auth0/callback',
-              responseType: 'code',
-              params: {
-                scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
-              }
-            }
-          });
-        </script>
+
           <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
           <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
         @if(Auth::check())
@@ -96,11 +85,39 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.auth0.com/js/lock/10.15/lock.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="/javascript/homepage.js"></script>
+        <script>
+          var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
+            auth: {
+              redirectUrl: 'http://localhost/auth0/callback',
+              responseType: 'code',
+              params: {
+                scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+              }
+            }
+          });
+          var searchApp = angular.module("searchApp", []);
+          searchApp.controller("searchController", function($scope) {
+            $(".submitdeleteform").submit(function(e) {
+              e.preventDefault();
+              $.ajax({
+                type:"POST",
+                url: $(this).data('url'),
+                data: $(this).serialize(),
+                success: function(msg) {
+                  $books=msg.books;
+                  $chapters=msg.chapters;
+                  $scope.apply();
+                }
+              });
+            });
+          });
+  </script>
 
 
   </body>

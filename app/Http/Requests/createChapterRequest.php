@@ -25,7 +25,8 @@ class createChapterRequest extends Request
     {
         return [
             'name' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'order' => 'integer',
         ];
     }
 }

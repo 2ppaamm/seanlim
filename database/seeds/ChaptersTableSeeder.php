@@ -19,7 +19,8 @@ class ChaptersTableSeeder extends Seeder
 		    'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 		    'name' => $faker->sentence(5),
 		    'book_id' => $faker->numberBetween(1,100),
-		    'content' => $faker->paragraph(10)
+		    'content' => $faker->paragraph(10),
+		    'order' => $faker->numberBetween(1,100),
 		    ]);
 		}
 	}

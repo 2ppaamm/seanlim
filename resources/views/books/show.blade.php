@@ -23,7 +23,7 @@
       <!-- Column of book summaries -->
       <div class="row">
         <div class="col-md-4">
-          <p><img id = "cover" alt = "Cover image" src = "{{$books->cover}}"/></p>
+          <p><img id = "cover" alt = "Cover image" src = "{{$books->cover}}" class = 'img-responsive'/></p>
         </div>
         <div class = 'col-md-8'>
           <div class="panel panel-default">
@@ -60,10 +60,10 @@
                             <p>Are you sure you want to delete chapter {{$chapter->name}}?</p>
                           </div>
                           <div class="modal-footer">
-                            <form method="POST" action='/books/{{$books->id}}/chapters/{{$chapter->id}}' class='submitdeleteform'>                    
+                            <form method="POST" data-url='/books/{{$books->id}}/chapters/{{$chapter->id}}' class='submitdeleteform'>                    
                               <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                               <input name="_method" type="hidden" value="DELETE">
-                              <button type="submit" class="btn btn-default" onClick="">Yes</button>
+                              <button type="submit" class="btn btn-default">Yes</button>
                             </form>
                           </div>
                         </div>

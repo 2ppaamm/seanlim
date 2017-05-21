@@ -7,7 +7,7 @@
 @section('content')
     <div class="jumbotron">
       <div class="container">
-        <h1 id = "heading">Edit Book</h1>
+        <h1 id = "heading">Editing Chapter {{$chapters->name}}</h1>
       </div>
     </div>
 
@@ -20,10 +20,13 @@
                 <form method='POST' action='/books/{{$books->id}}/chapters/{{$chapters->id}}'>
                     <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                     <input name="_method" type="hidden" value="PUT">
-                    <h2> {{$books->title}} </h2>
                     <div class = 'form-group'>
                         <label for='name'>Chapter name</label>
                         <input type='text' name='name' class = 'form-control' value = '{{$chapters->name}}'>
+                    </div>
+                    <div class='form-group'>
+                          <label for='order'>Chapter number</label>
+                          <input name='order' class = 'form-control' type='text' value = '{{$chapters->order}}'>
                     </div>
                     <div class='form-group'>
                           <label for='content'>Content</label>

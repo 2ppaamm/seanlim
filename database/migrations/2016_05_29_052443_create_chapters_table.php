@@ -19,6 +19,7 @@ class CreateChaptersTable extends Migration
 
                 $table->string('name');
                 $table->string('content');
+                $table->integer('order')->default(999);
             });
     }
 
