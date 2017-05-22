@@ -10,7 +10,7 @@
     <!-- Main jumbotron for info on site -->
     <div class="jumbotron">
       <div class="container">
-        <h1 id = "heading">Sean's Stuff</h1>
+        <h1 id = "heading">@if(Auth::user()) {{Auth::user()->name}}'s Stuff @endif</h1>
         <p id = "header">A place to put stuff I work on when I have free time.</p>
         <p><a class="btn btn-primary btn-lg" href="/about" role="button" id = "learn">More Info &raquo;</a></p>
       </div>
