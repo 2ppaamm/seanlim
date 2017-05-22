@@ -95,7 +95,7 @@
         <script>
           var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
             auth: {
-              redirectUrl: 'http://localhost/auth0/callback',
+              redirectUrl: 'http://backend.sunshine-boy.me/auth0/callback',
               responseType: 'code',
               params: {
                 scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
