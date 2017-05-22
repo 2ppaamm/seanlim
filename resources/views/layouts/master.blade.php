@@ -55,7 +55,8 @@
       </ul>
           <form id = "searchForm" class="navbar-form navbar-right" action='/search'>
             <div class="form-group">
-              <input type="text" class="form-control" id = "searchInput" placeholder="Search Book Titles" ng-model="searchInput.title">
+              <input type="text" class="form-control" placeholder="Search Book/Chapter" ng-model="searchInput.title">
+              <input type="hidden" ng-model="searchInput.name" ng-bind="searchChapter.name = searchInput.title"/>
             </div>
           </form>
     </div><!-- /.navbar-collapse -->
@@ -94,7 +95,7 @@
         <script>
           var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
             auth: {
-              redirectUrl: 'http://ass2.sunshine-boy.me/auth0/callback',
+              redirectUrl: 'http://localhost/auth0/callback',
               responseType: 'code',
               params: {
                 scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes

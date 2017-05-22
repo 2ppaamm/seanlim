@@ -34,21 +34,20 @@
               {{$books->synopsis}}
             </div>
           </div>
-          <div class="panel panel-default chapter-panel">
+          <div class="panel panel-default chapter-panel" ng-init="chapters = {{$chapters}}">
             <!-- Default panel contents -->
             <div class="panel-heading">Chapters</div>
             <!-- List group -->
-            <ul class="list-group">
-              @foreach ($chapters as $chapter)
+            <ul class="list-group" ng-repeat="chapter in filteredchapters=( chapters |filter:searchChapter)">
                 <li class="list-group-item">
-                  Chapter {{$chapter->order}}
-                  <a href = '/books/{{$books->id}}/chapters/{{$chapter->id}}'>{{$chapter->name}}</a>
+                  Chapter @{{chapter.order}}
+                  <a href = '/books/{{$books->id}}/chapters/@{{chapter.id}}'>@{{chapter.name}}</a>
                   @if (Auth::user() && Auth::user()->id == $books->user->id)                  
                     <!-- Modal Trigger -->
-                    <a href="" data-toggle="modal" data-target="#myModal{{$chapter->id}}"><span class='pull-right'>Delete</span></a>
-                    <a href='/books/{{$books->id}}/chapters/{{$chapter->id}}/edit'><span class='pull-right'>Edit &nbsp;</span></a>
+                    <a href="" data-toggle="modal" data-target="#myModal@{{chapter.id}}"><span class='pull-right'>Delete</span></a>
+                    <a href='/books/{{$books->id}}/chapters/@{{chapter.id}}/edit'><span class='pull-right'>Edit &nbsp;</span></a>
                     <!-- Modal -->
-                    <div class="modal fade" id="myModal{{$chapter->id}}" role="dialog">
+                    <div class="modal fade" id="myModal@{{chapter.id}}" role="dialog">
                       <div class="modal-dialog">
                       
                         <!-- Modal content-->
@@ -58,10 +57,10 @@
                             <h4 class="modal-title">Modal Header</h4>
                           </div>
                           <div class="modal-body">
-                            <p>Are you sure you want to delete chapter {{$chapter->name}}?</p>
+                            <p>Are you sure you want to delete chapter @{{chapter.name}}?</p>
                           </div>
                           <div class="modal-footer">
-                            <form method="POST" data-url='/books/{{$books->id}}/chapters/{{$chapter->id}}' class='submitdeleteform'>                    
+                            <form method="POST" data-url='/books/{{$books->id}}/chapters/@{{chapter.id}}' class='submitdeleteform'>                    
                               <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                               <input name="_method" type="hidden" value="DELETE">
                               <button type="submit" class="btn btn-default">Yes</button>
@@ -73,7 +72,6 @@
                     </div>
                   @endif
                 </li>
-              @endforeach
             </ul>
           </div>
       </div>

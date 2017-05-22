@@ -17,9 +17,9 @@ class ChaptersTableSeeder extends Seeder
 		    Chapter::create([
 		    'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 		    'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-		    'name' => $faker->sentence(5),
+		    'name' => $faker->realText($maxNbChars = 25, $indexSize = 2),
 		    'book_id' => $faker->numberBetween(1,100),
-		    'content' => $faker->paragraph(10),
+		    'content' => $faker->realText($maxNbChars = 1000, $indexSize = 2),
 		    'order' => $faker->numberBetween(1,100),
 		    ]);
 		}
