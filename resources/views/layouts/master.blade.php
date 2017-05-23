@@ -18,6 +18,8 @@
 
     <link href="/css/homepage.css" rel="stylesheet">
 
+    <link rel="icon" href="/images/favicon.ico" sizes="16x16" type="image/x-icon">
+
   </head>
   <body ng-controller="searchController">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -91,7 +93,7 @@
         <script>
           var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
             auth: {
-              redirectUrl: 'https://www.sunshine-boy.me/auth0/callback',
+              redirectUrl: 'http://   q/auth0/callback',
               responseType: 'code',
               params: {
                 scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
