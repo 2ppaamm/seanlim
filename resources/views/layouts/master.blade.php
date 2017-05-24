@@ -26,11 +26,8 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-<<<<<<< HEAD
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ass2navbar" aria-expanded="false" aria-controls="navbar">
-=======
+
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
->>>>>>> 971ee95ae4654bedc26d331d1b77547ded4de273
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -46,31 +43,21 @@
             @endif
           </a>
         </div>
-<<<<<<< HEAD
-        <div class="collapse navbar-collapse" id="ass2navbar">
-          <ul class="nav navbar-nav">
-
-=======
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
->>>>>>> 971ee95ae4654bedc26d331d1b77547ded4de273
             <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
             <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
           @if(Auth::check())
             <li><a href="/books/create">Create New Book<span class="sr-only">(current)</span></a></li>
             <li><a href="/logout">Logout<span class="sr-only">(current)</span></a></li>
           @else
-<<<<<<< HEAD
           @desktop 
             <li><a onclick="lock.show();">Login or Register<span class="sr-only">(current)</span></a></li>
           @elsedesktop
             <li><a href="/login">Login or Register<span class="sr-only">(current)</span></a></li>
           @enddesktop
-=======
-            <li><a onclick="lock.show();">Login or Register<span class="sr-only">(current)</span></a></li>
->>>>>>> 971ee95ae4654bedc26d331d1b77547ded4de273
           @endif
           </ul>
           <form id = "searchForm" class="navbar-form navbar-right" action='/search'>
@@ -80,11 +67,7 @@
             </div>
           </form>
         </div><!-- /.navbar-collapse -->
-<<<<<<< HEAD
-      </div>
-=======
       </div><!-- /.container-fluid -->
->>>>>>> 971ee95ae4654bedc26d331d1b77547ded4de273
     </nav>
 
     @yield('content')
@@ -115,11 +98,7 @@
         <script>
           var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
             auth: {
-<<<<<<< HEAD
-              redirectUrl: 'http://www.sunshine-boy.me/auth0/callback',
-=======
               redirectUrl: 'https://www.sunshine-boy.me/auth0/callback',
->>>>>>> 971ee95ae4654bedc26d331d1b77547ded4de273
               responseType: 'code',
               params: {
                 scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
