@@ -45,7 +45,8 @@
 
                 <button type='submit' class='btn btn-primary'>Login</button>
 
-            </form> 
+            </form>
+            <p>To register click <a href="/register">here</a>. 
         </div>
       </div>
 

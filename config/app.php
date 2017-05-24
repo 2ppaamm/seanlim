@@ -155,7 +155,7 @@ return [
         Foobooks\Providers\AuthServiceProvider::class,
         Foobooks\Providers\EventServiceProvider::class,
         Foobooks\Providers\RouteServiceProvider::class,
-
+        Riverskies\Laravel\MobileDetect\MobileDetectServiceProvider::class,
         /*
          * Third-party package providers
          */
@@ -207,7 +207,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        
+        'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Auth0' => Auth0\Login\Facade\Auth0::class,
     ],

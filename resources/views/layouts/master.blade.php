@@ -25,7 +25,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ass2navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -41,28 +41,29 @@
           @endif
           </a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+        <div class="collapse navbar-collapse" id="ass2navbar">
+          <ul class="nav navbar-nav">
 
-          <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
-          <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
-        @if(Auth::check())
-          <li><a href="/books/create">Create New Book<span class="sr-only">(current)</span></a></li>
-          <li><a href="/logout">Logout<span class="sr-only">(current)</span></a></li>
-        @else
-          <li><a onclick="lock.show();">Login or Register<span class="sr-only">(current)</span></a></li>
-        @endif
-      </ul>
+            <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
+          @if(Auth::check())
+            <li><a href="/books/create">Create New Book<span class="sr-only">(current)</span></a></li>
+            <li><a href="/logout">Logout<span class="sr-only">(current)</span></a></li>
+          @else
+          @desktop 
+            <li><a onclick="lock.show();">Login or Register<span class="sr-only">(current)</span></a></li>
+          @elsedesktop
+            <li><a href="/login">Login or Register<span class="sr-only">(current)</span></a></li>
+          @enddesktop
+          @endif
+          </ul>
           <form id = "searchForm" class="navbar-form navbar-right" action='/search'>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search Book/Chapter" ng-model="searchInput.title">
               <input type="hidden" ng-model="searchInput.name" ng-bind="searchChapter.name = searchInput.title"/>
             </div>
           </form>
-    </div><!-- /.navbar-collapse -->
-        <div id="navbar" class="navbar-collapse collapse">
-
-        </div><!--/.navbar-collapse -->
+        </div><!-- /.navbar-collapse -->
       </div>
     </nav>
 
@@ -95,7 +96,7 @@
         <script>
           var lock = new Auth0Lock('wtFlUHJRvMDfov_5cIYZ2pguRkEkTwFV', 'seanlim.au.auth0.com', {
             auth: {
-              redirectUrl: 'http://ass2.sunshine-boy.me/auth0/callback',
+              redirectUrl: 'http://www.sunshine-boy.me/auth0/callback',
               responseType: 'code',
               params: {
                 scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes

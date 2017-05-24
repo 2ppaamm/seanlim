@@ -41,8 +41,15 @@ Route::resource('books', 'BookController');
 */
 
 # Process logout
-Route::get('/logout', 'Auth\AuthController@logout');
+Route::get('/login', function(){
+    return view('auth.login');
+});
 
+Route::get('/register', function(){
+    return view('auth.register');
+});
+
+Route::get('/logout', 'Auth\AuthController@logout');    
 Route::get('/show-login-status', function() {
 
     # You may access the authenticated user via the Auth facade
