@@ -37,9 +37,7 @@
             @if(Auth::user())
               <img src = "{{Auth::user()->image}}" alt = "{{Auth::user()->name}}'s avatar" style="max-height:40px; margin-top:-10px;"></img>
             @else
-              <?php
-                echo 'Hello, Guest!'
-              ?>
+              <img src = "images/favicon.png" alt = "Seanbooks logo" style="max-height:40px; margin-top:-10px;" />
             @endif
           </a>
         </div>
@@ -101,9 +99,17 @@
               redirectUrl: 'https://www.sunshine-boy.me/auth0/callback',
               responseType: 'code',
               params: {
-                scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+                scope: 'openid email', // Learn about scopes: https://auth0.com/docs/scopes
               }
-            }
+            },
+            theme: {
+              logo: 'images/favicon.png',
+              primaryColor: '#524bb9'
+            },
+            languageDictionary: {
+              emailInputPlaceholder: "something@youremail.com",
+              title: "SeanBooks"
+            },                          
           });
           var searchApp = angular.module("searchApp", []);
           searchApp.controller("searchController", function($scope) {

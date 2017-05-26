@@ -16,14 +16,7 @@
       <!-- Column of book summaries -->
       <div class="row">
         <div class="col-md-6">
-                
-            @if(count($errors) > 0)
-                <ul class='errors'>
-                    @foreach ($errors->all() as $error)
-                        <li><span class='fa fa-exclamation-circle'></span> {{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
+          @include('errors')
             <form method='POST' action='/register'>
                     {!! csrf_field() !!}
 
