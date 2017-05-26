@@ -16,18 +16,9 @@
       <!-- Column of book summaries -->
       <div class="row">
         <div class="col-md-6">
-                
-            @if(count($errors) > 0)
-                <ul class='errors'>
-                    @foreach ($errors->all() as $error)
-                        <li><span class='fa fa-exclamation-circle'></span> {{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
+            <p>To register click <a href="/register">here</a>. 
+            @include('errors')
             <form method='POST' action='/login'>
-
-                {!! csrf_field() !!}
-
                 <div class='form-group'>
                     <label for='email'>Email</label>
                     <input type='text' name='email' id='email' value='{{ old('email') }}' class = 'form-control'>
@@ -46,7 +37,6 @@
                 <button type='submit' class='btn btn-primary'>Login</button>
 
             </form>
-            <p>To register click <a href="/register">here</a>. 
         </div>
       </div>
 

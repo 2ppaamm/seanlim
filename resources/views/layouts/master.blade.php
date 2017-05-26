@@ -58,7 +58,7 @@
           @enddesktop
           @endif
           </ul>
-          <form id = "searchForm" class="navbar-form navbar-right" action='/search'>
+          <form id = "searchForm" class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search Book/Chapter" ng-model="searchInput.title">
               <input type="hidden" ng-model="searchInput.name" ng-bind="searchChapter.name = searchInput.title"/>
