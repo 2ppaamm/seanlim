@@ -22,7 +22,7 @@ class BooksTableSeeder extends Seeder
 	    'title' => 'The Test',
 	    'user_id' => $user_id,
 	    'published' => true,
-	    'cover' => 'https://img2.imagesbn.com/p/9780743273565_p0_v4_s114x166.JPG',
+	    'cover' => 'http://img2.imagesbn.com/p/9780743273565_p0_v4_s114x166.JPG',
 	    'synopsis' => $faker->realText($maxNbChars = 250, $indexSize = 2),
 	    'chapters' => 12,
 	    ]);
@@ -34,7 +34,7 @@ class BooksTableSeeder extends Seeder
 	    'title' => 'The Tester',
 	    'user_id' => $user_id,
 	    'published' => false,
-	    'cover' => 'https://img1.imagesbn.com/p/9780061148514_p0_v2_s114x166.JPG',
+	    'cover' => 'http://img1.imagesbn.com/p/9780061148514_p0_v2_s114x166.JPG',
 	    'synopsis' => $faker->realText($maxNbChars = 250, $indexSize = 2),
 	    'page_count' => 1234,
 	    ]);
