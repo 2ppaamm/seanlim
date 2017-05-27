@@ -25,7 +25,7 @@
             <div class="panel-heading"><h3>My Books</h3></div>
             <div class="panel-body">
               @foreach ($mybooks as $book)
-              <div class="col-md-6 col-sm-12 col-lg-3">
+              <div class="col-md-6 col-sm-6 col-lg-3">
                 <img src="{{$book->cover}}" class="img-responsive" alt="Cover Image for {{$book->title}}"/>
                 <h2>{{$book->title}}</h2><span>by {{$book->user->name}}</span>
                 <p>{{$book->synopsis}}</p>
@@ -42,7 +42,7 @@
         </div>
     @endif
 
-        <div class="col-lg-9 col-sm-12 col-md-6">
+        <div class="col-md-9 col-sm-12">
           <div class="panel panel-default">
             <div class="panel-heading"><h3>Book list</h3></div>
               <div class="panel-body" ng-init="books = {{$books}}">
