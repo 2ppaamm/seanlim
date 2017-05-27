@@ -46,7 +46,7 @@ class BooksTableSeeder extends Seeder
 				    'title' => $faker->realText($maxNbChars = 20, $indexSize = 2),
 				    'user_id' => $faker->numberBetween($min = 1, $max = 22),
 				    'published' => $faker->boolean($chanceOfGettingTrue = 30),
-				    'cover' => 'https://lorempixel.com/640/480/',
+				    'cover' => $faker->imageUrl($width = 640, $height = 480),
 				    'synopsis' => $faker->realText($maxNbChars = 250, $indexSize = 2),
 				    'private' => false,
 				    'chapters' => $faker->numberBetween($min = 0, $max = 200),
