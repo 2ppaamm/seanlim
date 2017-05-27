@@ -115,7 +115,7 @@
           searchApp.controller("searchController", function($scope) {
           });
           $(document).ready(function(){
-              $(".submitdeleteform").submit(function(e){
+              $('.submitdeleteform').submit(function(e){
                   e.preventDefault();
                   $('.modal').modal('hide');
                   $.ajax({
