@@ -12,6 +12,7 @@
         @if (Auth::user() && Auth::user()->id == $books->user->id)
         <p>
           <a class="btn btn-primary btn-lg" href="/books/{{$books->id}}/edit" role="button" id = "learn">Edit this book</a>
+          <a class="btn btn-primary btn-lg" href="/books/{{$books->id}}/delete" role="button" id = "learn">Delete this book</a>
           <a class="btn btn-primary btn-lg" href="/books/{{$books->id}}/chapters/create" role="button" id = "learn">Add a chapter</a>
         </p>
         @endif

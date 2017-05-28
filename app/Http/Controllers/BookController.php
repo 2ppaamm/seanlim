@@ -91,12 +91,23 @@ class BookController extends Controller
     	return view('books.show')->with(compact('books', 'chapters'));
     }
 
+    /**
+    * GET
+    * Page to confirm deletion
+    */
+    public function confirmDeletion(Book $books) {
+        $author = $books->user;  
+        if ($author['id'] == Auth::user()->id){
+            return view('books.delete')->with('books', $books);
+        }
+        return "You do not have sufficient permissions to delete this chapter.";
+    }
+
     public function destroy(Book $books){
         $author = $books->user;  
         if ($author['id'] == Auth::user()->id){
             $books->delete();
-            return redirect()->back();
+            return redirect("/");
         }
-        return "You do not have sufficient permissions to delete this chapter.";
     }
 }	

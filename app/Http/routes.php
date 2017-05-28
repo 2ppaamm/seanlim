@@ -34,6 +34,7 @@ Route::get('/', 'BookController@index');
 Route::resource('tag', 'TagController');
 Route::resource('books.chapters', 'ChapterController');
 Route::resource('books', 'BookController');
+Route::get('books/{books}/delete', 'BookController@confirmDeletion');
 
 
 /*
@@ -46,7 +47,7 @@ Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::get('/login', 'Auth\AuthController@getLogin');
 
-# Process login form
+# Process login formcss
 Route::post('/login', 'Auth\AuthController@postLogin');
 
 # Show registration form
