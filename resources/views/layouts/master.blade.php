@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            @if(Auth::user())
+            @if(Auth::user() && Auth::user()->image)
               <img src = "{{Auth::user()->image}}" alt = "{{Auth::user()->name}}'s avatar" style="max-height:40px; margin-top:-10px;"></img>
             @else
               <img src = "/images/favicon.png" alt = "Seanbooks logo" style="max-height:40px; margin-top:-10px;" />
