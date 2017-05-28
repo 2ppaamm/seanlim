@@ -37,7 +37,7 @@
             @if(Auth::user())
               <img src = "{{Auth::user()->image}}" alt = "{{Auth::user()->name}}'s avatar" style="max-height:40px; margin-top:-10px;"></img>
             @else
-              <img src = "images/favicon.png" alt = "Seanbooks logo" style="max-height:40px; margin-top:-10px;" />
+              <img src = "/images/favicon.png" alt = "Seanbooks logo" style="max-height:40px; margin-top:-10px;" />
             @endif
           </a>
         </div>
@@ -103,7 +103,7 @@
               }
             },
             theme: {
-              logo: 'images/favicon.png',
+              logo: '/images/favicon.png',
               primaryColor: '#524bb9'
             },
             languageDictionary: {
