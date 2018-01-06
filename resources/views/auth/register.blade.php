@@ -18,7 +18,6 @@
         <div class="col-md-6">
           @include('errors')
             <form method='POST' action='/register'>
-                    {!! csrf_field() !!}
 
                     <div class='form-group'>
                         <label for='name'>Name</label>
